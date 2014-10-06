@@ -8,7 +8,7 @@ import akka.routing.BroadcastRoutingLogic
 
 class ParserActor extends Actor {
   val ebolaActor = context.actorOf(Props[EbolaActor], "ebola")
-  val sunActor = context.actorOf(Props[SunActor], "ebola")
+  val sunActor = context.actorOf(Props[SunActor], "sun")
   val router = {
     val routees = Vector(
       ActorRefRoutee(ebolaActor),
