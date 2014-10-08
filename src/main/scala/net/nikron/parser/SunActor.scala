@@ -11,8 +11,14 @@ class SunActor extends Actor {
   val calc = new SunriseSunsetCalculator(new Location("32.822601", "-96.790687"), "America/Chicago")
 
   def receive = {
-    case message: WebhookRoomMessage => if (message.item.message.message == "When is the sunset?") {
-      context.actorSelection("/user/drunkestbot") ! new DrunkSpeak("Sunset is at " + calc.getOfficialSunsetForDate(Calendar.getInstance()) + ".")
-    }
+    case message: WebhookRoomMessage =>
+      if (message.item.message.message == "When is the sunset?") {
+        context.actorSelection("/user/drunkestbot") ! new DrunkSpeak("Sunset is at " +
+          calc.getOfficialSunsetForDate(Calendar.getInstance()) + ".")
+      }
+      else if (message.item.message.message == "When is the sunrise?") {
+        context.actorSelection("/user/drunkestbot") ! new DrunkSpeak("Sunrise is at " +
+          calc.getOfficialSunriseForDate(Calendar.getInstance()) + ".")
+      }
   }
 }
