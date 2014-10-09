@@ -12,11 +12,11 @@ class SunActor extends Actor {
 
   def receive = {
     case message: WebhookRoomMessage =>
-      if (message.item.message.message == "When is the sunset?") {
+      if (message.item.message.message.toLowerCase() == "when is the sunset?") {
         context.actorSelection("/user/drunkestbot") ! new DrunkSpeak("Sunset is at " +
           calc.getOfficialSunsetForDate(Calendar.getInstance()) + ".")
       }
-      else if (message.item.message.message == "When is the sunrise?") {
+      else if (message.item.message.message.toLowerCase() == "when is the sunrise?") {
         context.actorSelection("/user/drunkestbot") ! new DrunkSpeak("Sunrise is at " +
           calc.getOfficialSunriseForDate(Calendar.getInstance()) + ".")
       }
