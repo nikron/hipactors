@@ -15,14 +15,14 @@ case class SoberUp() extends DrunkMessage
 class DrunkBotActor extends Actor {
   var alcoholLevel = 1
 
-  val notifier = new RoomNotifier("")
+  val notifier = new RoomNotifier("AkrEOdaeUfaOJOL16C4IaLvi7QBV99N618ixbFTj")
 
   def chat(message : String) = {
-      notifier.sendNotification("708382", "Drunkest Bot: " + message, Color.green)
+      notifier.sendNotification("877122", "Drunkest Bot: " + message, Color.green)
   }
 
   def emote(message : String) = {
-      notifier.sendNotification("708382", "Drunkest Bot " + message, Color.green)
+      notifier.sendNotification("877122", "Drunkest Bot " + message, Color.green)
   }
 
   def receive = {
